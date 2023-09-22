@@ -21,10 +21,10 @@
 </header>
 <nav>
     <div class="left-side">
-        <a class="nav-button" href="#">Home</a>
-        <a class="nav-button" href="#">Products</a>
-        <a class="nav-button" href="#">About Us</a>
-        <a class="nav-button" href="#">Contact</a>
+        <a class="nav-button" href="{% url 'landing' %}">Home</a>
+        <a class="nav-button" href="{% url 'products' %}">Products</a>
+        <a class="nav-button" href="{% url 'aboutus' %}">About Us</a>
+        <a class="nav-button" href="{% url 'contacts' %}">Contact</a>
     </div>
     <div class="right-side">
         <input class="nav-search" type="search" placeholder="Search">

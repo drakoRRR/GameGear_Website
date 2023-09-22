@@ -1,0 +1,187 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    position: relative;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.shopping-cart {
+    width: 16px;
+    height: 16px;
+}
+
+.header-image {
+    width: 200px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #fff;
+    color: black;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-side {
+    flex-grow: 1;
+    display: flex;
+    margin-left: 1000px;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f1380d;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #ff5733;
+}
+
+.nav-search {
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    color: #333;
+}
+
+.nav-search::placeholder {
+    color: #999;
+}
+
+.sign-btn {
+    background-color: #007BFF;
+}
+
+.sign-btn:hover {
+    background-color: #0056b3;
+}
+
+/*contants*/
+.container {
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Стили для контейнера */
+
+/* Стили для логотипа компании */
+.company-logo {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+/* Стили для имени компании */
+.container.contacts h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Стили для года основания компании */
+.container.contacts p:nth-child(3) {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Стили для номеров телефонов */
+.container.contacts p:nth-child(4),
+.container.contacts p:nth-child(5) {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Стили для карты Google */
+.container.contacts iframe {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+/*footer content*/
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content a {
+    margin: 0 10px;
+}
+
+.footer-content img {
+    width: 35px;
+    height: 35px;
+}
+
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px; /* добавляет расстояние между последним элементом и футером */
+}

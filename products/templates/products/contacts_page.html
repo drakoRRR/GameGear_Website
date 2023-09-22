@@ -1,0 +1,19 @@
+{% extends 'products/basesite.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/contacts_page.css' %}">
+ {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="container contacts">
+        <img src="logo_image/logo_gamegearpng.png" alt="Company Logo" class="company-logo">
+        <h1>Game Gear Shop</h1>
+        <p>Since 2005</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Phone: +1 (987) 654-3210</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.524727731841!2d-122.08408118461937!3d37.42199997982492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb4d7f31766d%3A0xe8d46ba20d50f7eb!2sGoogle%20LLC!5e0!3m2!1sen!2sus!4v1631698400049!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+{% endblock %}

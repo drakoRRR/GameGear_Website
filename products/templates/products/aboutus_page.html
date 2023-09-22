@@ -1,0 +1,19 @@
+{% extends 'products/basesite.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/aboutus_page.css' %}">
+ {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="container about-us">
+        <h2>About Us</h2>
+        <p class="about-us-text">
+            We are a gaming technology company founded in 2005. We specialize in providing top-notch gaming gear to
+            gamers around the world. With hundreds of satisfied customers, we are committed to delivering the best
+            gaming experience.
+        </p>
+    </div>
+</div>
+{% endblock %}

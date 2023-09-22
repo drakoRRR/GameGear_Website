@@ -2,30 +2,12 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'products/css/landing_page.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/products_page.css' %}">
  {% endblock %}
 
-
 {% block content %}
-<div class="slideshow-container">
-    <div class="mySlides fade">
-        <img src="{% static 'products/images/promo/promo1.jpg' %}" alt="Slide 1">
-    </div>
-
-    <div class="mySlides fade">
-        <img src="{% static 'products/images/promo/promo2.jpg' %}" alt="Slide 2">
-    </div>
-
-    <div class="mySlides fade">
-        <img src="{% static 'products/images/promo/promo3.jpg' %}" alt="Slide 3">
-    </div>
-
-    <!-- Добавьте больше изображений по вашему усмотрению -->
-</div>
-
 <div class="container">
     {% include 'products/border_menu.html' %}
-
     <div class="products">
         <div class="product">
             <div class="product-image">
@@ -56,28 +38,4 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        let slides = document.getElementsByClassName("mySlides");
-
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        slideIndex++;
-
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 3000); // Менять слайд каждые 3 секунды (настройте по вашему желанию)
-    }
-</script>
-
 {% endblock %}
