@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Device Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    {% block css %} {% endblock %}
+    <style>
+        body::before {
+            background-image: url('{% static 'products/images/background.jpg' %}');
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="{% static 'products/images/logo_gamegearpng.png' %}" alt="Game Gear Logo" class="header-image">
+</header>
+<nav>
+    <div class="left-side">
+        <a class="nav-button" href="#">Home</a>
+        <a class="nav-button" href="#">Products</a>
+        <a class="nav-button" href="#">About Us</a>
+        <a class="nav-button" href="#">Contact</a>
+    </div>
+    <div class="right-side">
+        <input class="nav-search" type="search" placeholder="Search">
+        <a class="nav-button sign-btn" href="#">Sign In</a>
+        <a class="nav-button sign-btn" href="#">Sign Up</a>
+        <a class="nav-button" href="#"><img src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
+    </div>
+</nav>
+
+{% block content %} {% endblock %}
+
+<div class="wrapper">
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Online Store Pet Project</p>
+            <a href="https://www.linkedin.com/in/vlad-musaelyan-5966a1278/">
+                <img src="{% static 'products/images/footer/icon_link.png' %}" alt="">
+            </a>
+            <a href="https://github.com/drakoRRR">
+                <img src="{% static 'products/images/footer/icon_github.png' %}" alt="">
+            </a>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

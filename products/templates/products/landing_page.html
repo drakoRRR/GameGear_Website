@@ -1,0 +1,90 @@
+{% extends 'products/basesite.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/landing_page.css' %}">
+ {% endblock %}
+
+
+{% block content %}
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="{% static 'products/images/promo/promo1.jpg' %}" alt="Slide 1">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="{% static 'products/images/promo/promo2.jpg' %}" alt="Slide 2">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="{% static 'products/images/promo/promo3.jpg' %}" alt="Slide 3">
+    </div>
+
+    <!-- Добавьте больше изображений по вашему усмотрению -->
+</div>
+
+<div class="container">
+    <div class="border-menu">
+        <a href="">Gaming Mouses</a>
+        <a href="">Gaming Keyboards</a>
+        <a href="">Gaming Mousepad</a>
+        <a href="">Gaming Headphones</a>
+        <a href="">Gaming PC</a>
+        <a href="">Monitors</a>
+        <a href="">Accessories</a>
+    </div>
+    <div class="products">
+        <div class="product">
+            <div class="product-image">
+                <img src="product_images/mouse1.jpg" alt="Gaming Mouse 1">
+            </div>
+            <h2>Gaming Mouse 1</h2>
+            <p>High-performance gaming mouse with...</p>
+            <p class="product-price">$299.99</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="product_images/mouse2.jpg" alt="Gaming Mouse 2">
+            </div>
+            <h2>Gaming Mouse 2</h2>
+            <p>High-performance gaming mouse with...</p>
+            <p class="product-price">$299.99</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="product_images/mouse2.jpg" alt="Gaming Mouse 2">
+            </div>
+            <h2>Gaming Mouse 2</h2>
+            <p>High-performance gaming mouse with...</p>
+            <p class="product-price">$299.99</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex++;
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Менять слайд каждые 3 секунды (настройте по вашему желанию)
+    }
+</script>
+
+{% endblock %}
