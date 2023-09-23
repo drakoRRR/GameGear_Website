@@ -1,0 +1,35 @@
+{% extends 'users/baselogin.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Sign Up</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/register_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Sign Up</h2>
+    <form action="/login" method="post">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password Confirmation</label>
+            <input type="password" id="password-confirmation" name="password" required>
+            <p>Enter the same password as before, for verification</p>
+        </div>
+        <button type="submit">Sign Up</button>
+        <div class="signin-text">
+            <p class="centered-text">Already have an account? <a href="{% url 'users:login' %}" class="signin-link">Sign In</a></p>
+        </div>
+    </form>
+</div>
+{% endblock %}

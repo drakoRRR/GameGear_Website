@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Device Shop</title>
+    {% block header %} {% endblock %}
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     {% block css %} {% endblock %}
     <style>
@@ -21,16 +21,16 @@
 </header>
 <nav>
     <div class="left-side">
-        <a class="nav-button" href="{% url 'landing' %}">Home</a>
-        <a class="nav-button" href="{% url 'products' %}">Products</a>
-        <a class="nav-button" href="{% url 'aboutus' %}">About Us</a>
-        <a class="nav-button" href="{% url 'contacts' %}">Contact</a>
+        <a class="nav-button" href="{% url 'products:landing' %}">Home</a>
+        <a class="nav-button" href="{% url 'products:products' %}">Products</a>
+        <a class="nav-button" href="{% url 'products:aboutus' %}">About Us</a>
+        <a class="nav-button" href="{% url 'products:contacts' %}">Contact</a>
     </div>
     <div class="right-side">
         <input class="nav-search" type="search" placeholder="Search">
         <a class="nav-button sign-btn" href="#">Sign In</a>
         <a class="nav-button sign-btn" href="#">Sign Up</a>
-        <a class="nav-button" href="{% url 'shoppinglist' %}"><img src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
+        <a class="nav-button" href="{% url 'products:shoppinglist' %}"><img src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
     </div>
 </nav>
 

@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} {% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    {% block css %} {% endblock %}
+    <style>
+        body::before {
+            background-image: url('{% static 'products/images/background.jpg' %}');
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>

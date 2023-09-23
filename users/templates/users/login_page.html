@@ -1,0 +1,41 @@
+{% extends 'users/baselogin.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Sign In</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/login_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Sign In</h2>
+    <form action="/login" method="post">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+        <button type="submit">Sign In</button>
+        <div class="signup-text">
+            <p class="centered-text">Don't have an account? <a href="{% url 'users:register' %}" class="signup-link">Sign Up</a></p>
+        </div>
+    </form>
+
+    <!-- Додавання іконок та надпису "Забули пароль?" -->
+    <div class="social-icons">
+        <a href="#" class="social-icon"><img src="{% static 'users/images/facebook.png' %}" alt="Facebook"></a>
+        <a href="#" class="social-icon"><img src="{% static 'users/images/github.png' %}" alt="GitHub"></a>
+        <a href="#" class="social-icon"><img src="{% static 'users/images/gmail.png' %}" alt="Google"></a>
+    </div>
+
+</div>
+{% endblock %}

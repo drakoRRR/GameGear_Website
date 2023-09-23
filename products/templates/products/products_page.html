@@ -1,6 +1,10 @@
 {% extends 'products/basesite.html' %}
 {% load static %}
 
+{% block header %}
+    <title>Products</title>
+{% endblock %}
+
 {% block css %}
     <link rel="stylesheet" href="{% static 'products/css/products_page.css' %}">
  {% endblock %}
