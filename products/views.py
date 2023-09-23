@@ -13,10 +13,6 @@ def aboutus_page(request):
     return render(request, 'products/aboutus_page.html')
 
 
-def contacts_page(request):
-    return render(request, 'products/aboutus_page.html')
-
-
 def shoppinglist_page(request):
     return render(request, 'products/shoppinglist_page.html')
 
