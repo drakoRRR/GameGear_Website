@@ -12,18 +12,31 @@
 {% block content %}
 <div class="login-container">
     <h2>Sign Up</h2>
-    <form action="/login" method="post">
+    <form action="{% url 'users:register' %}" method="post">
+        {% csrf_token %}
         <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username }}
         </div>
         <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <label for="{{ form.first_name.id_for_label }}">Name</label>
+            {{ form.first_name }}
         </div>
         <div class="input-group">
-            <label for="password">Password Confirmation</label>
-            <input type="password" id="password-confirmation" name="password" required>
+            <label for="{{ form.last_name.id_for_label }}">Surname</label>
+            {{ form.last_name }}
+        </div>
+        <div class="input-group">
+            <label for="{{ form.email.id_for_label }}">Email Address</label>
+            {{ form.email }}
+        </div>
+        <div class="input-group">
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            {{ form.password1 }}
+        </div>
+        <div class="input-group">
+            <label for="{{ form.password2.id_for_label }}">Password Confirmation</label>
+            {{ form.password2 }}
             <p>Enter the same password as before, for verification</p>
         </div>
         <button type="submit">Sign Up</button>
