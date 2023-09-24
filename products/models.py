@@ -26,6 +26,10 @@ class Product(models.Model):
     def __str__(self):
         return f'Product: {self.name}, Category: {self.category}'
 
+class BasketQuerySet(models.QuerySet):
+    def total_sum(self):
+        return sum(basket.sum() for basket in self)
+
 
 class Basket(models.Model):
     '''Model for basket on the website'''
@@ -35,5 +39,10 @@ class Basket(models.Model):
     quantity = models.PositiveSmallIntegerField(default=0)
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
+    objects = BasketQuerySet.as_manager()
+
     def __str__(self):
         return f'User: {self.user} Product: {self.product}'
+
+    def sum(self):
+        return self.product.price * self.quantity

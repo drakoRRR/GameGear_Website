@@ -80,7 +80,7 @@
                                 <input name="basketID" type="number" class="form-control"
                                        value="{{ basket.quantity }}" min="0">
                             </div>
-                            <div class="col-lg-4">{{ basket.product.price }} $</div>
+                            <div class="col-lg-4">{{ basket.sum }} $</div>
                             <div class="col-lg-4">
                                 <a href="{% url 'products:basket_remove' basket.id %}">
                                     <img src="{% static 'users/images/trash-can.png' %}" alt="">
@@ -94,7 +94,7 @@
             <div class="card mb-3">
                 <div class="card-footer">
                     <p class="float-left">Summary</p>
-                    <h4 class="float-right">2 390 USD</h4>
+                    <h4 class="float-right">{{ baskets.total_sum }} $</h4>
                 </div>
             </div>
             <a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
