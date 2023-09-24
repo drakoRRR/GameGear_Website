@@ -14,7 +14,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(5px);
@@ -184,4 +183,82 @@ footer p {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px; /* добавляет расстояние между последним элементом и футером */
+}
+
+/* Для ноутбуков-планшетов */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .container.contacts {
+        flex-basis: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .left-side, .right-side {
+        margin: 10px 0;
+    }
+
+    .nav-button {
+        padding: 5px 10px;
+        margin: 5px;
+    }
+
+    .nav-search {
+        width: 100%;
+    }
+}
+
+/* Для мобильных телефонов */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .left-side, .right-side {
+        margin: 10px 0;
+    }
+
+    .nav-button {
+        padding: 5px 10px;
+        margin: 5px;
+    }
+
+    .nav-search {
+        width: 100%;
+    }
+
+    .slideshow-container {
+        padding: 10px;
+    }
+
+    .header-image {
+        width: 150px;
+        height: 60px;
+    }
+
+    .product {
+        padding: 10px;
+    }
+
+    .add-to-cart-button {
+        padding: 5px 10px;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+
+    .footer-content img {
+        width: 25px;
+        height: 25px;
+    }
 }
