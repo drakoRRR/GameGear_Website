@@ -1,0 +1,103 @@
+{% extends 'products/basesite.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'users/css/profile_page.css' %}">
+ {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <h4 class="mt-3 mb-3">Profile</h4>
+            <div class="col-lg-12 text-center">
+                <img width="150" height="150"
+                     src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'users/images/profileavatar.png' %}" {% endif %}
+                     class="img-thumbnail">
+            </div>
+            <form action="{% url 'users:profile' %}" method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-row mb-2">
+                        <div class="col-lg-12">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="userAvatar" size="50">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.first_name.id_for_label }}">Name</label>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.last_name.id_for_label }}">Surname</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <label class="small mb-1" for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="small mb-1" for="{{ form.email.id_for_label }}">Email</label>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-12" style="margin-top: 33px;">
+                        <input class="btn btn-info btn-block" type="submit" value="Save">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-5">
+            <h4 class="mt-3 mb-3 d-flex justify-content-between align-items-center mb-3">
+                Shopping List <span class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Product name</h5>
+                    <p class="card-text">Product description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">
+                        <div class="row text-center">
+                            <div class="col-lg-4">
+                                <input name="basketID" type="number" class="form-control"
+                                       value="1" min="0">
+                            </div>
+                            <div class="col-lg-4">2 390 USD</div>
+                            <div class="col-lg-4">
+                                <a href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card mb-3">
+                <div class="card-footer">
+                    <p class="float-left">Summary</p>
+                    <h4 class="float-right">2 390 USD</h4>
+                </div>
+            </div>
+            <a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
+                Make Order
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
