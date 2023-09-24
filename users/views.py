@@ -54,3 +54,7 @@ def profile(request):
     }
 
     return render(request, 'users/profile_page.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return redirect('products:landing')
