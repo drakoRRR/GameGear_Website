@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 
-from .models import User
 from users.forms import UserLoginForm, UserRegisterForm, ProfileForm
+from products.models import Basket
 
 # Create your views here.
 def login(request):
@@ -62,7 +62,8 @@ def profile(request):
         form = ProfileForm(instance=request.user)
 
     context = {
-        'form': form
+        'form': form,
+        'baskets': Basket.objects.all()
     }
 
     return render(request, 'users/profile_page.html', context)

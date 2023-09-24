@@ -23,7 +23,8 @@
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.description|slice:":85"|add:"..." }}</p>
                 <p class="product-price">${{ product.price }}</p>
-                <button class="add-to-cart-button">Add to Cart</button>
+                <button class="add-to-cart-button"><a href="{% url 'products:basket_add' product.id %}" style="text-decoration: none; color: inherit;">Add to
+                    Cart</a></button>
             </div>
         {% endfor %}
     </div>

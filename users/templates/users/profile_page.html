@@ -63,31 +63,34 @@
             </form>
         </div>
         <div class="col-lg-5">
+            {% if baskets %}
             <h4 class="mt-3 mb-3 d-flex justify-content-between align-items-center mb-3">
                 Shopping List <span class="badge badge-secondary badge-pill">3</span>
             </h4>
-            <div class="card mb-3">
+            {% for basket in baskets %}
+                <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Product name</h5>
-                    <p class="card-text">Product description</p>
+                    <h5 class="card-title">{{ basket.product.name }}</h5>
+                    <p class="card-text">{{ basket.product.description|slice:":50"|add:"..." }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item bg-light">
                         <div class="row text-center">
                             <div class="col-lg-4">
                                 <input name="basketID" type="number" class="form-control"
-                                       value="1" min="0">
+                                       value="{{ basket.quantity }}" min="0">
                             </div>
-                            <div class="col-lg-4">2 390 USD</div>
+                            <div class="col-lg-4">{{ basket.product.price }} $</div>
                             <div class="col-lg-4">
-                                <a href="#">
-                                    <i class="fas fa-trash"></i>
+                                <a href="{% url 'products:basket_remove' basket.id %}">
+                                    <img src="{% static 'users/images/trash-can.png' %}" alt="">
                                 </a>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+            {% endfor %}
             <div class="card mb-3">
                 <div class="card-footer">
                     <p class="float-left">Summary</p>
@@ -97,6 +100,11 @@
             <a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
                 Make Order
             </a>
+            {% else %}
+                <h4 class="text-center">
+                    Shopping List is empty
+                </h4>
+            {% endif %}
         </div>
     </div>
 </div>
