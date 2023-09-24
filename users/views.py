@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import auth
+from django.contrib import auth, messages
 
 from .models import User
 from users.forms import UserLoginForm, UserRegisterForm, ProfileForm
@@ -8,13 +8,18 @@ from users.forms import UserLoginForm, UserRegisterForm, ProfileForm
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
-        if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
-            if user:
-                auth.login(request, user)
-                return redirect('products:landing')
+
+        # if form.is_valid():  # in prod, check the values
+
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+        if user:
+            auth.login(request, user)
+            return redirect('products:landing')
+        else:
+            messages.success(request, 'There was an error with username or password, check again !')
+            return redirect('users:login')
     else:
         form = UserLoginForm()
 
@@ -26,10 +31,17 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm()
+        form = UserRegisterForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('users:login')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
+            return redirect('products:landing')
+        else:
+            messages.success(request, 'There was an error with username or password, check again !')
+            return redirect('users:register')
     else:
         form = UserRegisterForm()
 

@@ -14,14 +14,13 @@
 
 {% block content %}
     <div class="login-container">
-        {% if form.non_field_errors %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert"
-             style="margin-top: 10px;">
-            {{ form.non_field_errors }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
         {% endif %}
         <h2>Sign In</h2>
         <form action="{% url 'users:login' %}" method="post">

@@ -1,20 +1,28 @@
 from django.shortcuts import render
 
+from .models import ProductCategory, Product
+
 # Create your views here.
 def landing_page(request):
-    return render(request, 'products/landing_page.html')
+    context = {
+        'categories': ProductCategory.objects.all(),
+        'products': Product.objects.all()
+    }
+
+    return render(request, 'products/landing_page.html', context)
 
 
 def products_page(request):
-    return render(request, 'products/products_page.html')
+    context = {
+        'categories': ProductCategory.objects.all(),
+        'products': Product.objects.all()
+    }
+
+    return render(request, 'products/products_page.html', context)
 
 
 def aboutus_page(request):
     return render(request, 'products/aboutus_page.html')
-
-
-def shoppinglist_page(request):
-    return render(request, 'products/shoppinglist_page.html')
 
 
 def contacts_page(request):

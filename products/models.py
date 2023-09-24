@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 # Create your models here.
 class ProductCategory(models.Model):
     '''Model for category'''
@@ -24,3 +26,14 @@ class Product(models.Model):
     def __str__(self):
         return f'Product: {self.name}'
 
+
+class Basket(models.Model):
+    '''Model for basket on the website'''
+
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    quantity = models.PositiveSmallIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'User: {self.user} Product: {self.product}'

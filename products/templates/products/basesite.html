@@ -34,7 +34,7 @@
             <a class="nav-button sign-btn" href="{% url 'users:login' %}">Sign In</a>
             <a class="nav-button sign-btn" href="{% url 'users:register' %}">Sign Up</a>
         {% endif %}
-        <a class="nav-button" href="{% url 'products:shoppinglist' %}"><img src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
+        <a class="nav-button" href="{% url 'users:profile' %}"><img src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
     </div>
 </nav>
 
