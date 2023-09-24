@@ -24,7 +24,7 @@ class Product(models.Model):
     category = models.ForeignKey(to=ProductCategory, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Product: {self.name}'
+        return f'Product: {self.name}, Category: {self.category}'
 
 
 class Basket(models.Model):

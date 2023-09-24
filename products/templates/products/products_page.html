@@ -13,33 +13,19 @@
 <div class="container">
     {% include 'products/border_menu.html' %}
     <div class="products">
-        <div class="product">
-            <div class="product-image">
-                <img src="product_images/mouse1.jpg" alt="Gaming Mouse 1">
+        {% for product in products %}
+            <div class="product">
+                <a href="">
+                    <div class="product-image">
+                        <img src="{{ product.image.url }}" alt="Gaming Mouse">
+                    </div>
+                </a>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description|slice:":85"|add:"..." }}</p>
+                <p class="product-price">${{ product.price }}</p>
+                <button class="add-to-cart-button">Add to Cart</button>
             </div>
-            <h2>Gaming Mouse 1</h2>
-            <p>High-performance gaming mouse with...</p>
-            <p class="product-price">$299.99</p>
-            <button class="add-to-cart-button">Add to Cart</button>
-        </div>
-        <div class="product">
-            <div class="product-image">
-                <img src="product_images/mouse2.jpg" alt="Gaming Mouse 2">
-            </div>
-            <h2>Gaming Mouse 2</h2>
-            <p>High-performance gaming mouse with...</p>
-            <p class="product-price">$299.99</p>
-            <button class="add-to-cart-button">Add to Cart</button>
-        </div>
-        <div class="product">
-            <div class="product-image">
-                <img src="product_images/mouse2.jpg" alt="Gaming Mouse 2">
-            </div>
-            <h2>Gaming Mouse 2</h2>
-            <p>High-performance gaming mouse with...</p>
-            <p class="product-price">$299.99</p>
-            <button class="add-to-cart-button">Add to Cart</button>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
