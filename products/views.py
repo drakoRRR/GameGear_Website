@@ -8,7 +8,7 @@ from .models import ProductCategory, Product, Basket
 def landing_page(request):
     context = {
         'categories': ProductCategory.objects.all(),
-        'products': Product.objects.all()
+        'products': Product.objects.distinct('category')[:6]
     }
 
     return render(request, 'products/landing_page.html', context)
