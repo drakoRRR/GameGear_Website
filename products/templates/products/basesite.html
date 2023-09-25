@@ -27,7 +27,10 @@
         <a class="nav-button" href="{% url 'products:contacts' %}">Contact</a>
     </div>
     <div class="right-side">
-        <input class="nav-search" type="search" placeholder="Search">
+        <form class="nav-search" action="" method="get">
+            <input type="search" name="q" placeholder="Search">
+            <button type="submit"><img src="{% static 'products/images/search.png' %}" alt="Search"></button>
+        </form>
         {% if user.is_authenticated %}
             <a class="nav-button sign-btn" href="{% url 'users:logout' %}">Logout</a>
         {% else %}

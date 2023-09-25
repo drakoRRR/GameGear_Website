@@ -77,17 +77,38 @@ nav {
     background-color: #ff5733;
 }
 
-.nav-search {
-    margin: 0 10px;
+/* Search */
+form.nav-search input[type="search"] {
     padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: white;
-    color: #333;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    outline: none;
 }
 
-.nav-search::placeholder {
-    color: #999;
+form.nav-search button[type="submit"] {
+    float: left;
+    width: 20%;
+    padding: 5.4px;
+    background: #007BFF;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.nav-search button[type="submit"]:hover {
+    background: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+form.nav-search::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .sign-btn {
