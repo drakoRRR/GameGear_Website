@@ -10,6 +10,11 @@
  {% endblock %}
 
 {% block content %}
+    {% if search_query %}
+        <div class="search-text">
+            <h1>Results for: {{ search_query }}</h1>
+        </div>
+    {% endif %}
 <div class="container">
     {% include 'products/border_menu.html' %}
     <div class="products">
@@ -30,36 +35,42 @@
     </div>
 </div>
 
-    <div class="pagination">
-        <ul>
-            <li class="{% if page_obj.has_previous %} active {% else %} disabled {% endif %}"><a
-                    href="
-                            {% if page_obj.has_previous %}
-                                {% if category_id %}
-                                    {% url 'products:paginator' category_id page_obj.previous_page_number %}
-                                {% else %}
-                                    {% url 'products:paginator_without_category' page_obj.previous_page_number %}
-                                {% endif %}
-                            {% else %} #
-                            {% endif %}">Previous</a>
+{% if not search_query %}
+<div class="pagination">
+    <ul>
+        <li class="{% if page_obj.has_previous %} active {% else %} disabled {% endif %}">
+            <a href="{% if page_obj.has_previous %}
+                       {% if category_id %}
+                           {% url 'products:paginator' category_id page_obj.previous_page_number %}
+                       {% else %}
+                           {% url 'products:paginator_without_category' page_obj.previous_page_number %}
+                       {% endif %}
+                   {% else %} #
+                   {% endif %}">Previous</a>
+        </li>
+        {% for page in page_obj.paginator.page_range %}
+            <li>
+                <a href="{% if category_id %}
+                           {% url 'products:paginator' category_id page %}
+                       {% else %}
+                           {% url 'products:paginator_without_category' page %}
+                       {% endif %}
+                       ">{{ page }}</a>
             </li>
-            {% for page in page_obj.paginator.page_range %}
-                <li><a href="
-                        {% if category_id %}{% url 'products:paginator' category_id page %}{% else %}{% url 'products:paginator_without_category' page %}{% endif %}">{{ page }}</a>
-                </li>
-            {% endfor %}
-            <li class="{% if page_obj.has_next %} active {% else %} disabled {% endif %}"><a
-                    href="
-                            {% if page_obj.has_next %}
-                                {% if category_id %}
-                                    {% url 'products:paginator' category_id page_obj.next_page_number %}
-                                {% else %}{% url 'products:paginator_without_category' page_obj.next_page_number %}
-                            {% endif %}
-                            {% else %} #
-                            {% endif %}">Next</a>
-            </li>
-        </ul>
-    </div>
+        {% endfor %}
+        <li class="{% if page_obj.has_next %} active {% else %} disabled {% endif %}">
+            <a href="{% if page_obj.has_next %}
+                       {% if category_id %}
+                           {% url 'products:paginator' category_id page_obj.next_page_number %}
+                       {% else %}
+                           {% url 'products:paginator_without_category' page_obj.next_page_number %}
+                       {% endif %}
+                   {% else %} #
+                   {% endif %}">Next</a>
+        </li>
+    </ul>
+</div>
+{% endif %}
 
 {#    <div class="pagination">#}
 {#        <ul>#}

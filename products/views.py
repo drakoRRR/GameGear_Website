@@ -28,7 +28,7 @@ class ProductsView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset = super(ProductsView, self).get_queryset()
+        queryset = super().get_queryset()
         category_id = self.kwargs.get('category_id')
         search_query = self.request.GET.get('search')
 
@@ -40,11 +40,16 @@ class ProductsView(ListView):
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ProductsView, self).get_context_data()
+        context = super().get_context_data()
         context['categories'] = ProductCategory.objects.all()
         context['category_id'] = self.kwargs.get('category_id')
         context['search_query'] = self.request.GET.get('search')
         return context
+
+    def get_paginate_by(self, queryset):
+        if self.request.GET.get('search') is not None:
+            return None
+        return super().get_paginate_by(queryset)
 
 
 class AboutUsView(TemplateView):
