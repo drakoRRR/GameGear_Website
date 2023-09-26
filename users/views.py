@@ -40,6 +40,10 @@ class ProfileView(UpdateView):
         context['baskets'] = Basket.objects.filter(user=self.object)
         return context
 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
 
 # @login_required
 # def profile(request):

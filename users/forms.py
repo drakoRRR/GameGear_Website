@@ -35,8 +35,8 @@ class ProfileForm(UserChangeForm):
         'class': 'form-control py-4'
     }))
     image = forms.ImageField(widget=forms.FileInput(attrs={
-        'class': 'custom-file-input'
-    }))
+        'class': 'custom-file-input',
+    }), required=False)
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4',
         'readonly': True

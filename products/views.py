@@ -30,12 +30,20 @@ class ProductsView(ListView):
     def get_queryset(self):
         queryset = super(ProductsView, self).get_queryset()
         category_id = self.kwargs.get('category_id')
-        return queryset.filter(category_id=category_id) if category_id else queryset
+        search_query = self.request.GET.get('search')
+
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+        if search_query:
+            queryset = queryset.filter(name__icontains=search_query)
+
+        return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsView, self).get_context_data()
         context['categories'] = ProductCategory.objects.all()
         context['category_id'] = self.kwargs.get('category_id')
+        context['search_query'] = self.request.GET.get('search')
         return context
 
 
@@ -66,3 +74,4 @@ def basket_remove(request, basket_id):
     basket = Basket.objects.filter(id=basket_id)
     basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+

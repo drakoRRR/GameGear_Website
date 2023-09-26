@@ -27,8 +27,8 @@
         <a class="nav-button" href="{% url 'products:contacts' %}">Contact</a>
     </div>
     <div class="right-side">
-        <form class="nav-search" action="" method="get">
-            <input type="search" name="q" placeholder="Search">
+        <form class="nav-search" action="{% url 'products:search_view' %}" method="get">
+            <input type="search" name="search" placeholder="Search">
             <button type="submit"><img src="{% static 'products/images/search.png' %}" alt="Search"></button>
         </form>
         {% if user.is_authenticated %}
