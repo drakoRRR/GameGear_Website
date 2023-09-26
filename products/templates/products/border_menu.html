@@ -1,5 +1,5 @@
 <div class="border-menu">
     {% for category in categories %}
-        <a href="">{{ category.name }}</a>
+        <a href="{% url 'products:category' category.id %}">{{ category.name }}</a>
     {% endfor %}
-    </div>
+</div>

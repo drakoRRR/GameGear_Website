@@ -319,6 +319,18 @@ h2 {
     text-decoration: underline;
 }
 
+/* Previous и Next */
+.pagination li:first-child a,
+.pagination li:last-child a {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #007BFF; /* Обводка */
+    box-shadow: none; /* Убираем тень, если есть */
+}
+
 /* Для ноутбуков-планшетов */
 @media (max-width: 1024px) {
     .container {

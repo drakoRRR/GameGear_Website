@@ -14,10 +14,10 @@ def landing_page(request):
     return render(request, 'products/landing_page.html', context)
 
 
-def products_page(request):
+def products_page(request, category_id=None):
     context = {
         'categories': ProductCategory.objects.all(),
-        'products': Product.objects.all()
+        'products': Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
     }
 
     return render(request, 'products/products_page.html', context)
