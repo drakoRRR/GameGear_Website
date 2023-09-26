@@ -29,4 +29,37 @@
         {% endfor %}
     </div>
 </div>
+
+    <div class="pagination">
+        <ul>
+            <li class="{% if products.has_previous %} active {% else %} disabled {% endif %}"><a
+                    href="
+                            {% if products.has_previous %}
+                                {% if category_id %}
+                                    {% url 'products:paginator' category_id products.previous_page_number %}
+                                {% else %}
+                                    {% url 'products:paginator_without_category' products.previous_page_number %}
+                                {% endif %}
+                            {% else %} #
+                            {% endif %}">Previous</a>
+            </li>
+            {% for page in products.paginator.page_range %}
+                <li><a href="
+                        {% if category_id %}{% url 'products:paginator' category_id page %}{% else %}{% url 'products:paginator_without_category' page %}{% endif %}">{{ page }}</a>
+                </li>
+            {% endfor %}
+            <li class="{% if products.has_next %} active {% else %} disabled {% endif %}"><a
+                    href="
+                            {% if products.has_next %}
+                                {% if category_id %}
+                                    {% url 'products:paginator' category_id products.next_page_number %}
+                                {% else %}{% url 'products:paginator_without_category' products.next_page_number %}
+                            {% endif %}
+                            {% else %} #
+                            {% endif %}">Next</a>
+            </li>
+        </ul>
+    </div>
+
 {% endblock %}
+

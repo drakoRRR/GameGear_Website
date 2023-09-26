@@ -242,13 +242,23 @@ h2 {
 /* Previous и Next */
 .pagination li:first-child a,
 .pagination li:last-child a {
-    background-color: #007BFF;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    border: 1px solid #007BFF; /* Обводка */
     box-shadow: none; /* Убираем тень, если есть */
+}
+
+.pagination .disabled {
+    pointer-events: none; /* Отключаем кликабельность для отключенных кнопок */
+    color: #fff; /* Серый цвет текста для отключенных кнопок */
+    background-color: #545252; /* Фон для отключенных кнопок */
+    border: 1px solid #ccc; /* Обводка для отключенных кнопок */
+}
+
+.pagination .active {
+    background-color: #007BFF; /* Цвет активной страницы */
+    border: 1px solid #007BFF;
 }
 
 /*footer content*/
