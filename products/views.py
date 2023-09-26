@@ -2,41 +2,50 @@ from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
+from django.views.generic.list import ListView
 
 from .models import ProductCategory, Product, Basket
 
 # Create your views here.
-def landing_page(request):
-    context = {
-        'categories': ProductCategory.objects.all(),
-        'products': Product.objects.distinct('category')[:6]
-    }
+class LandingView(ListView):
+    model = Product
+    template_name = 'products/landing_page.html'
 
-    return render(request, 'products/landing_page.html', context)
+    def get_queryset(self):
+        queryset = super(LandingView, self).get_queryset()
+        return queryset.distinct('category')[:6]
 
-
-def products_page(request, category_id=None, page_number=1):
-    products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
-
-    per_page = 6
-    paginator = Paginator(products, per_page)
-    products_paginator = paginator.page(page_number)
-
-    context = {
-        'categories': ProductCategory.objects.all(),
-        'products': products_paginator,
-        'category_id': category_id
-    }
-
-    return render(request, 'products/products_page.html', context)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(LandingView, self).get_context_data()
+        context['categories'] = ProductCategory.objects.all()
+        return context
 
 
-def aboutus_page(request):
-    return render(request, 'products/aboutus_page.html')
+class ProductsView(ListView):
+    model = Product
+    template_name = 'products/products_page.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = super(ProductsView, self).get_queryset()
+        category_id = self.kwargs.get('category_id')
+        return queryset.filter(category_id=category_id) if category_id else queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductsView, self).get_context_data()
+        context['categories'] = ProductCategory.objects.all()
+        context['category_id'] = self.kwargs.get('category_id')
+        return context
 
 
-def contacts_page(request):
-    return render(request, 'products/contacts_page.html')
+class AboutUsView(TemplateView):
+    template_name = 'products/aboutus_page.html'
+
+
+class ContactsView(TemplateView):
+    template_name = 'products/contacts_page.html'
+
 
 @login_required
 def basket_add(request, product_id):

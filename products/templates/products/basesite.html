@@ -38,7 +38,7 @@
             <a class="nav-button sign-btn" href="{% url 'users:register' %}">Sign Up</a>
         {% endif %}
         <a class="nav-button"
-           href="{% if user.is_authenticated %} {% url 'users:profile' %} {% else %} {% url 'users:login' %} {% endif %}"><img
+           href="{% if user.is_authenticated %} {% url 'users:profile' user.id %} {% else %} {% url 'users:login' %} {% endif %}"><img
                 src="{% static 'products/images/shopping-cart.png' %}" alt="" class="shopping-cart"></a>
     </div>
 </nav>
