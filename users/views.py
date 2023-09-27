@@ -14,6 +14,10 @@ class LoginUserView(LoginView):
     template_name = 'users/login_page.html'
     form_class = UserLoginForm
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'There was an error with username or password, check again !')
+        return super().form_invalid(form)
+
 
 class RegistrationView(CreateView):
     model = User
@@ -25,6 +29,10 @@ class RegistrationView(CreateView):
         response = super().form_valid(form)
         auth.login(self.request, self.object)
         return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'There was an error with username or password, check again !')
+        return super().form_invalid(form)
 
 
 class ProfileView(UpdateView):

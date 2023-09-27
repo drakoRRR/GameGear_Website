@@ -300,7 +300,7 @@ footer p {
 }
 
 .search-text {
-    background-color: #f0f0f0; /* Background color */
+    background-color: white;
     border: 1px solid #ddd; /* Border to separate it from other content */
     text-align: center; /* Center-align the text */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -312,6 +312,27 @@ footer p {
 .search-text h1 {
     font-size: 24px; /* Font size for the heading */
     color: #333; /* Text color */
+}
+
+.order-options {
+    display: flex;
+    align-items: center;
+}
+
+.order-options label {
+    margin-right: 10px;
+}
+
+.order-options select {
+    margin-right: 10px;
+}
+
+.order-options button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 /* Для ноутбуков-планшетов */
