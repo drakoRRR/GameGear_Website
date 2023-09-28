@@ -1,11 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
-from .models import ProductCategory, Product, Basket
+from .models import Basket, Product, ProductCategory
 
 # Create your views here.
 PER_PAGE = 6  # Constant for pagination
