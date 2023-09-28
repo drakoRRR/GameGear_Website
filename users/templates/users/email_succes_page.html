@@ -1,0 +1,22 @@
+{% extends 'users/baselogin.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Email Success</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/email_succes_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="email-container">
+        <div class="main-text">
+            <h1>Congratulations !</h1>
+        </div>
+        <div class="second-text">
+            <h3>Your email has been successfully verified</h3>
+            <button type="submit"><a href="{% url 'products:landing' %}">Main Page</a></button>
+        </div>
+    </div>
+{% endblock %}

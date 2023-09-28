@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,14 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f!#m(s7opo5&u4bs66^^xuz0=g8_wnvrm@maliyx39(cc!3u-+'
+SECRET_KEY = os.getenv("SECRET_KEY_DJANGO")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+DOMAIN_NAME = 'http://localhost:8000'
 # Application definition
 
 INSTALLED_APPS = [
@@ -80,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'store_db',
         'USER': 'store',
-        'PASSWORD': 'store_pass',
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -139,3 +141,12 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/users/signin/'
 LOGIN_REDIRECT_URL = '/products/'
 LOGOUT_REDIRECT_URL = '/products/'
+
+# Sending Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("MAIL")
+EMAIL_HOST_PASSWORD = os.getenv("MAIL_PASSWORD")
+EMAIL_USE_TLS = True
