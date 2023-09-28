@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Device Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'products/css/page_not_found.css' %}">
+</head>
+<body>
+    <img src="{% static 'products/images/404.png' %}" alt="">
+    <h1>Error</h1>
+    <h2>Page not found...</h2>
+    <button><a href="{% url 'products:landing' %}">Main Page</a></button>
+</body>
+</html>

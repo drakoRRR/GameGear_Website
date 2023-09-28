@@ -135,6 +135,9 @@ def search(request, page=1):
 
     return render(request, 'products/products_page.html', context)
 
+def page_not_found(request):
+    return render(request, 'products/page_not_found.html')
+
 # class ProductsView(ListView):
 #     model = Product
 #     template_name = 'products/products_page.html'
