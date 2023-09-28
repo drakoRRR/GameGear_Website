@@ -353,8 +353,6 @@ footer p {
     background-color: #ccc;
 }
 
-
-
 /* Для ноутбуков-планшетов */
 @media (max-width: 1024px) {
     .container {

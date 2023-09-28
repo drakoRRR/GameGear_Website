@@ -13,7 +13,7 @@
     <div class="search-text">
         {% if search_query %}<h1>Results for: {{ search_query }}</h1>{% endif %}
         <div class="order-options">
-            <label for="order" class="order-text">Order by:</label>
+            <label for="order">Order by:</label>
             <form action="{% if category_id %} {% url 'products:sort' category_id 1 %} {% else %} {% url 'products:sort_no_category' 1 %} {% endif %}"
                   method="GET">
                 <select id="order" name="sorting-products">
