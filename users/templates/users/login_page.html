@@ -1,5 +1,6 @@
 {% extends 'users/baselogin.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}
     <title>Sign In</title>
@@ -45,7 +46,7 @@
     <!-- Додавання іконок та надпису "Забули пароль?" -->
     <div class="social-icons">
         <a href="#" class="social-icon"><img src="{% static 'users/images/facebook.png' %}" alt="Facebook"></a>
-        <a href="#" class="social-icon"><img src="{% static 'users/images/github.png' %}" alt="GitHub"></a>
+        <a href="{% provider_login_url 'github' %}" class="social-icon"><img src="{% static 'users/images/github.png' %}" alt="GitHub"></a>
         <a href="#" class="social-icon"><img src="{% static 'users/images/gmail.png' %}" alt="Google"></a>
     </div>
 
