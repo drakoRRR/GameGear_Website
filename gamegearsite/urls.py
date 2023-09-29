@@ -24,6 +24,7 @@ from products.views import page_not_found
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls', namespace='products')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls', namespace='users')),
     path('accounts/', include('allauth.urls')),
 ]

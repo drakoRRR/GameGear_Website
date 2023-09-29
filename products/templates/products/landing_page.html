@@ -32,7 +32,7 @@
         <div class="products">
             {% for product in object_list %}
                 <div class="product">
-                    <a href="">
+                    <a href="{% url 'products:product' product.id %}">
                         <div class="product-image">
                             <img src="{{ product.image.url }}" alt="Gaming Mouse">
                         </div>

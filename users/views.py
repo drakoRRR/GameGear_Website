@@ -28,7 +28,7 @@ class RegistrationView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        auth.login(self.request, self.object)
+        auth.login(self.request, self.object, backend='django.contrib.auth.backends.ModelBackend')
         return response
 
     def form_invalid(self, form):
@@ -63,6 +63,8 @@ class EmailVerificationView(TemplateView):
             return super(EmailVerificationView, self).get(request, *args, **kwargs)
         else:
             return redirect('products:landing')
+
+
 
 # @login_required
 # def profile(request):
