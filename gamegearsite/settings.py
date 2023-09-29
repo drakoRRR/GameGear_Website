@@ -162,6 +162,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv("MAIL")
 EMAIL_HOST_PASSWORD = os.getenv("MAIL_PASSWORD")
 EMAIL_USE_TLS = True
+SERVER_EMAIL = 'djangopetproject@hotmail.com'
+DEFAULT_FROM_EMAIL = 'djangopetproject@hotmail.com'
 
 # OAuth
 AUTHENTICATION_BACKENDS = [
