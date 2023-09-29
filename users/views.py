@@ -107,7 +107,7 @@ class EmailVerificationView(TemplateView):
 #         'form': form
 #     }
 #
-#     return render(request, 'users/login_page.html', context)
+#     return render(request, 'users/login.html', context)
 
 # def register(request):
 #     if request.method == 'POST':
