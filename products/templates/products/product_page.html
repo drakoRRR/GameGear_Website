@@ -1,0 +1,89 @@
+{% extends 'products/basesite.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Product Page</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/product_page.css' %}">
+{% endblock %}
+
+{% block style %}
+    .rating label {
+        background-image: url({% static 'products/images/star_unfilled.png' %});
+    }
+
+    .rating input[type="radio"]:checked ~ label {
+    background-image: url({% static 'products/images/star_filled.png' %});
+    }
+
+    .rating input:checked + label ~ label {
+    background-image: url({% static 'products/images/star_unfilled.png' %});
+    }
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    {% include 'products/border_menu.html' %}
+
+    <main class="container-main">
+        <div class="left-column">
+            <img src="{{ product.image.url }}" alt="Product Image">
+        </div>
+        <div class="right-column">
+            <div class="product-description">
+                <h1>{{ product.name }}</h1>
+                <span>{{ product.category }}</span>
+                <p>{{ product.description }}</p>
+            </div>
+            <div class="product-price">
+                <span>{{ product.price }}$</span>
+                <a href="{% url 'products:basket_add' product.id %}" class="cart-btn">Add to cart</a>
+            </div>
+            <div class="user-reviews">
+                <h2>User Reviews</h2>
+                <!-- Single Review -->
+                <div class="single-review">
+                    <h3>John Doe</h3>
+                    <p>★★★★★</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+                </div>
+                <!-- Single Review -->
+                <div class="single-review">
+                    <h3>Jane Doe</h3>
+                    <p>★★★★☆</p>
+                    <p>Donec ligula sem, dignissim quis purus a, ultricies lacinia lectus. Aenean scelerisque, justo ac varius viverra.</p>
+                </div>
+            </div>
+
+            <!-- Product Reviews -->
+            <div class="product-reviews">
+                <h2>Leave a Review</h2>
+                <!-- Review Form -->
+                <form class="review-form">
+                    <label for="rating">Rating:</label>
+                    <div class="rating" id="rating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5" title="5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" title="4 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" title="3 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" title="2 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" title="1 star"></label>
+                    </div>
+
+                    <label for="review">Your Review:</label><br>
+                    <textarea id="review" name="review"></textarea><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

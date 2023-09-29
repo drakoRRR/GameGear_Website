@@ -135,6 +135,19 @@ def search(request, page=1):
 
     return render(request, 'products/products_page.html', context)
 
+
+def product_page(request, product_id):
+    '''Product page'''
+
+    product = Product.objects.get(id=product_id)
+
+    context = {
+        'categories': ProductCategory.objects.all(),
+        'product': product,
+    }
+
+    return render(request, 'products/product_page.html', context)
+
 def page_not_found(request):
     return render(request, 'products/page_not_found.html')
 

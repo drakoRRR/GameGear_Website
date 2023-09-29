@@ -17,4 +17,5 @@ urlpatterns = [
     path('goods/search/<int:page>/', views.search, name='search_view'),
     path('goods/<int:category_id>/sort/<int:page>/', views.sort, name='sort'),
     path('goods/sort/<int:page>/', views.sort, name='sort_no_category'),
+    path('goods/product/<int:product_id>', views.product_page, name='product')
 ]
