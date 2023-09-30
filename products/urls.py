@@ -23,5 +23,7 @@ urlpatterns = [
     path('goods/<int:category_id>/sort/<int:page>/', views.sort, name='sort'),
     path('goods/sort/<int:page>/', views.sort, name='sort_no_category'),
 
-    path('goods/product/<int:product_id>', views.product_page, name='product')
+    path('goods/product/<int:product_id>', views.product_page, name='product'),
+
+    path('goods/review/<int:product_id>', views.review, name='review')
 ]

@@ -44,25 +44,35 @@
             </div>
             <div class="user-reviews">
                 <h2>User Reviews</h2>
-                <!-- Single Review -->
-                <div class="single-review">
-                    <h3>John Doe</h3>
-                    <p>★★★★★</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
-                </div>
-                <!-- Single Review -->
-                <div class="single-review">
-                    <h3>Jane Doe</h3>
-                    <p>★★★★☆</p>
-                    <p>Donec ligula sem, dignissim quis purus a, ultricies lacinia lectus. Aenean scelerisque, justo ac varius viverra.</p>
-                </div>
+                {% for review in reviews %}
+                    <div class="single-review"
+                         style="padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                        <h3 style="font-size: 24px; color: #333;">{{ review.user.username }}</h3>
+                        <p style="font-size: 14px; color: #666;">{{ review.created_at }}</p>
+                        {% if not review.rate or not review.comment %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <p style="font-size: 18px; color: #333;">
+                            {% if review.rate == 1 %} <span>★</span>☆☆☆☆ {% endif %}
+                            {% if review.rate == 2 %} <span>★★</span>☆☆☆ {% endif %}
+                            {% if review.rate == 3 %} <span>★★★</span>☆☆ {% endif %}
+                            {% if review.rate == 4 %} <span>★★★★</span>☆ {% endif %}
+                            {% if review.rate == 5 %} <span>★★★★★</span> {% endif %}
+                        </p>
+                        <p style="font-size: 16px; color: #333;">{{ review.comment }}</p>
+                    </div>
+                {% endfor %}
             </div>
 
             <!-- Product Reviews -->
             <div class="product-reviews">
                 <h2>Leave a Review</h2>
                 <!-- Review Form -->
-                <form class="review-form">
+                <form class="review-form" method="GET" action="{% url 'products:review' product.id %}">
                     <label for="rating">Rating:</label>
                     <div class="rating" id="rating">
                         <input type="radio" id="star5" name="rating" value="5">

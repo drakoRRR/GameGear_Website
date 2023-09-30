@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
@@ -5,7 +6,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
-from .models import Basket, Product, ProductCategory
+from .models import Basket, Product, ProductCategory, Review
 
 # Create your views here.
 PER_PAGE = 6  # Constant for pagination
@@ -140,16 +141,36 @@ def product_page(request, product_id):
     '''Product page'''
 
     product = Product.objects.get(id=product_id)
+    reviews = Review.objects.filter(product=product)
 
     context = {
         'categories': ProductCategory.objects.all(),
         'product': product,
+        'reviews': reviews
     }
 
     return render(request, 'products/product_page.html', context)
 
 def page_not_found(request):
     return render(request, 'products/page_not_found.html')
+
+
+def review(request, product_id):
+    if request.method == 'GET':
+        product = Product.objects.get(id=product_id)
+
+        comment = request.GET.get('review')
+        rate = request.GET.get('rating')
+        user = request.user
+
+        if not comment or not rate:
+            messages.error(request, 'Both rating and review text are required.')
+            return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+        Review(user=user, product=product, comment=comment, rate=rate).save()
+
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
 
 # class ProductsView(ListView):
 #     model = Product

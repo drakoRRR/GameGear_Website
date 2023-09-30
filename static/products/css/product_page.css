@@ -361,6 +361,33 @@ footer p {
     background-size: cover;
 }
 
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Styles for the close button (the "x" symbol) */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change color on hover */
+.closebtn:hover {
+    color: black;
+}
+
 
 /* Для ноутбуков-планшетов */
 @media (max-width: 1024px) {
