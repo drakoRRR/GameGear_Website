@@ -214,4 +214,5 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+FIXTURE_DIRS = 'fixtures/'
 
