@@ -1,5 +1,9 @@
+{% load cache %}
+
 <div class="border-menu">
+{% cache 3600 categories %}
     {% for category in categories %}
         <a href="{% url 'products:category' category.id %}">{{ category.name }}</a>
     {% endfor %}
+{% endcache %}
 </div>

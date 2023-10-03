@@ -1,5 +1,8 @@
+import re
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_page
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -137,9 +140,14 @@ def search(request, page=1):
     return render(request, 'products/products_page.html', context)
 
 
+def cache_key_prefixer(request):
+    key = 'product_page:' + request.path
+    sanitized_key = re.sub(r'[^a-zA-Z0-9-_:./]', '_', key)
+    return sanitized_key
+
+@cache_page(60*15, key_prefix=cache_key_prefixer)  # Cache for 15 minutes
 def product_page(request, product_id):
     '''Product page'''
-
     product = Product.objects.get(id=product_id)
     reviews = Review.objects.filter(product=product)
 
