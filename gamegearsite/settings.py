@@ -85,6 +85,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gamegearsite.wsgi.application'
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
+
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
@@ -222,3 +227,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 FIXTURE_DIRS = 'fixtures/'
 
+
+# Celery
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
