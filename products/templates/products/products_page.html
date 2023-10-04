@@ -1,5 +1,5 @@
 {% extends 'products/basesite.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block header %}
     <title>Products</title>
@@ -41,7 +41,7 @@
                 </a>
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.description|slice:":85"|add:"..." }}</p>
-                <p class="product-price">${{ product.price }}</p>
+                <p class="product-price">${{ product.price|intcomma }}</p>
                 <button class="add-to-cart-button"><a href="{% url 'products:basket_add' product.id %}" style="text-decoration: none; color: inherit;">Add to
                     Cart</a></button>
             </div>

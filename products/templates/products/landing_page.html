@@ -1,5 +1,5 @@
 {% extends 'products/basesite.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block header %}
     <title>Gaming Device Shop</title>
@@ -23,7 +23,6 @@
             <img src="{% static 'products/images/promo/promo3.jpg' %}" alt="Slide 3">
         </div>
 
-        <!-- Добавьте больше изображений по вашему усмотрению -->
     </div>
 
     <div class="container">
@@ -39,7 +38,7 @@
                     </a>
                     <h2>{{ product.name }}</h2>
                     <p>{{ product.description|slice:":85"|add:"..." }}</p>
-                    <p class="product-price">${{ product.price }}</p>
+                    <p class="product-price">${{ product.price|intcomma }}</p>
                     <button class="add-to-cart-button"><a href="{% url 'products:basket_add' product.id %}"
                                                           style="text-decoration: none; color: inherit;">Add to
                         Cart</a></button>
@@ -67,7 +66,7 @@
         }
 
         slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 3000); // Менять слайд каждые 3 секунды (настройте по вашему желанию)
+        setTimeout(showSlides, 3000);
     }
 </script>
 
