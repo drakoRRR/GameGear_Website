@@ -28,6 +28,7 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls', namespace='users')),
     path('accounts/', include('allauth.urls')),
+    path('orders/', include('orders.urls', namespace='orders')),
 
     path('password_reset/',
          auth_views.PasswordResetView.as_view(template_name='users/password_reset_page.html'),
