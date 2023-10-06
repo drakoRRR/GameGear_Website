@@ -1,12 +1,10 @@
-import stripe
-
 from http import HTTPStatus
 
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+import stripe
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from gamegearsite import settings
 from orders.forms import OrderForm
@@ -32,6 +30,12 @@ class OrderListView(ListView):
     def get_queryset(self):
         queryset = super(OrderListView, self).get_queryset()
         return queryset.filter(initiator=self.request.user)
+
+
+class OrderDetailView(DetailView):
+    template_name = 'orders/order_item_page.html'
+    model = Order
+
 
 class OrderCreateView(CreateView):
     template_name = 'orders/order_page.html'

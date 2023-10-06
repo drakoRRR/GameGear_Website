@@ -1,11 +1,11 @@
+from http import HTTPStatus
+
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import ProductCategory, Product
+from .models import Product, ProductCategory
+from .views import PER_PAGE, search_paginate
 
-from .views import search_paginate, PER_PAGE
-
-from http import HTTPStatus
 
 # Create your tests here.
 class LandingViewTestCase(TestCase):

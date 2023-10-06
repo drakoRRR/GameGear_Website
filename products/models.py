@@ -1,5 +1,4 @@
 import stripe
-
 from django.db import models
 
 from gamegearsite import settings

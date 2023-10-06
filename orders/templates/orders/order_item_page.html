@@ -1,5 +1,5 @@
 {% extends 'products/basesite.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block header %}
     <title>Order Page</title>
@@ -17,7 +17,7 @@
     <section>
         <div class="container pt-5">
             <div class="text-center mt-5">
-                <h1>Order №12345</h1>
+                <h1>Order №{{ object.id }}</h1>
                 <div class="orders mt-5">
                     <table class="table">
                         <thead>
@@ -29,17 +29,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        {% for item in order.basket_history.purchased_items %}
+                            <tr>
                             <th scope="row">
-                                Худи черного цвета с монограммами adidas Originals
+                                {{ item.product_name }}
                             </th>
-                            <td>1</td>
-                            <td>80 $</td>
-                            <td>80 $</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.price|intcomma }} $</td>
+                            <td>{{ item.sum|intcomma }} $</td>
                         </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
-                    <p class="float-right h4 mt-3">Summary 170 $</p>
+                    <p class="float-right h4 mt-3">Summary {{ object.basket_history.total_sum|intcomma }} $</p>
                 </div>
             </div>
         </div>
