@@ -1,5 +1,5 @@
 {% extends 'products/basesite.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block header %}
     <title>Orders</title>
@@ -30,33 +30,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Оплачен</td>
-                            <td>21 авг. 21 года</td>
-                            <td>14 USD</td>
+                        {% for order in object_list %}
+                        <tr {% if order.status == 2 %} class="table-info" {% elif order.status == 3 %} class="table-success"{% endif %}>
+                            <th scope="row">{{ order.id }}</th>
+                            <td>{{ order.get_status_display }}</td>
+                            <td>{{ order.created|naturaltime }}</td>
+                            <td>{{ order.basket_history.total_sum|intcomma }} USD</td>
                             <td>
                                 <a href="order.html">view</a>
                             </td>
                         </tr>
-                        <tr class="table-success">
-                            <th scope="row">2</th>
-                            <td>Досталвен</td>
-                            <td>16 июля 21 года</td>
-                            <td>14 USD</td>
-                            <td>
-                                <a href="order.html">view</a>
-                            </td>
-                        </tr>
-                        <tr class="table-info">
-                            <th scope="row">3</th>
-                            <td>В пути</td>
-                            <td>14 нояб. 21 года</td>
-                            <td>14 USD</td>
-                            <td>
-                                <a href="order.html">view</a>
-                            </td>
-                        </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

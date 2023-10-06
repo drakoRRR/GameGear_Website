@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView
 
 from gamegearsite import settings
 from orders.forms import OrderForm
@@ -23,6 +23,15 @@ class SuccessView(TemplateView):
 class CanceledView(TemplateView):
     template_name = 'orders/canceled.html'
 
+
+class OrderListView(ListView):
+    template_name = 'orders/orders_page.html'
+    queryset = Order.objects.all()
+    ordering = ('-created')
+
+    def get_queryset(self):
+        queryset = super(OrderListView, self).get_queryset()
+        return queryset.filter(initiator=self.request.user)
 
 class OrderCreateView(CreateView):
     template_name = 'orders/order_page.html'
