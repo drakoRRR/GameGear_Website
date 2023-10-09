@@ -61,13 +61,11 @@ Celery was used for sending email verifications as delayed tasks to optimize thi
 
 
 # Website Usage
----
-## Langing Page
+## Landing Page
 ![text](media_readme/website/landing_page.png)
 On this landing page, you can find current discounts and available stock. 
 You have the options to sign in or sign up, navigate to the products page, or add products to your basket.
 Additionally, you can see filtered categories and six products, with each product belonging to its respective category.
----
 
 ## Products Page
 ![text](media_readme/website/products_page.png)
@@ -78,7 +76,6 @@ Additionally, we can observe how the sorting feature functions.
 ![text](media_readme/usage_website/search-preview.gif)
 The search system, which also 
 includes pagination and sorting options, is in operation.
----
 ## Product Page
 ![text](media_readme/website/product_page.png)
 On the product page, you can add products to the cart, read product descriptions, and write or read reviews.
