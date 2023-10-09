@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+      - celery
+      - stripe
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  redis:
+    image: redis:latest
+    command: redis-server --requirepass 20050303
+
+  celery:
+    build: .
+    command: celery -A gamegearsite worker --loglevel=info -P eventlet
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+
+  stripe:
+    build: .
+    command: stripe listen --forward-to 127.0.0.1:8000/webhook/stripe/
+    volumes:
+      - .:/code

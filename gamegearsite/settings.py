@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'django_extensions'
+    'django_extensions',
 
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',

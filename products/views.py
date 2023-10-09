@@ -8,6 +8,10 @@ from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.cache import cache
+
 
 from .models import Basket, Product, ProductCategory, Review
 
@@ -139,6 +143,14 @@ def search(request, page=1):
 
     return render(request, 'products/products_page.html', context)
 
+
+@receiver(post_save, sender=Product)
+def clear_cache(sender, **kwargs):
+    cache.clear()
+
+@receiver(post_save, sender=Review)
+def clear_cache(sender, **kwargs):
+    cache.clear()
 
 def cache_key_prefixer(request):
     key = 'product_page:' + request.path
