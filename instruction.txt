@@ -1,0 +1,13 @@
+Шаги что бы правильно запустить проект
+
+1. Запустить в Ubuntu Redis: sudo service redis-server start password 20050303
+
+2. Запустить celery: celery -A gamegearsite worker --loglevel=info -P eventlet
+
+3. Проверить PostgreSQL
+
+4. Запустить Stripe cmd:
+cd C:\Users\Vlad\Downloads\stripe_1.17.2_windows_x86_64
+
+stripe listen --forward-to 127.0.0.1:8000/webhook/stripe/
+
