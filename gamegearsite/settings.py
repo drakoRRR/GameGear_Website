@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-import urllib.parse
-
 import environ
 
 env = environ.Env(
@@ -72,6 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_extensions'
 
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',
